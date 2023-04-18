@@ -1,8 +1,8 @@
 from ftplib import FTP # библиотека для работы с FTP
 import os
-server = str(input("ip addres: ")) # адрес сервера
-username = str(input("username: ")) # имя пользователя
-password = str(input("password: ")) # пароль
+server = str(input("ip addres: "))
+username = str(input("username: "))
+password = str(input("password: "))
 try: # получение соединения
     ftp = FTP(server)
     ftp.login(username,password)
@@ -13,7 +13,7 @@ except: # ошибка
 
 def mainfunction():
    gap=-1
-   while gap!=0: # меню действий
+   while gap!=0: # меню
      print("1.Вывести список файлов")
      print("2.Загрузить файл на сервер")
      print("3.Скачать файл с сервера")
@@ -24,12 +24,12 @@ def mainfunction():
      elif gap == 2:
        file = str(input('Какой файл загружаем на сервер: '))
        file_to_upload = open(file, 'rb')
-       ftp.storbinaty('STOR' + os.path.basename(file),file_to_upload) # загрузка файла на сервер
+       ftp.storbinaty('STOR' + os.path.basename(file),file_to_upload) # загр файла на сервер
        print("файл отправлен и загружен на сервер")
      elif gap == 3:
        print(ftp.retrlines('LIST'))
        file = str(input('Какой файл скачаем с сервера: '))
-       dir = open('/home/igor/SP/SP/Lab5/' + file, 'wb') # загрузка файла с сервера в папку
+       dir = open('/home/igor/SP/SP/Lab5/' + file, 'wb') # загр файла с сервера в папку
        with open(dir+"\\"+file, 'wb') as a:
            ftp.retbinary('RETR' + file, a.write)
        print("файл получен")
