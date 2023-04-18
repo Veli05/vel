@@ -32,7 +32,7 @@ def mainfunction():
        dir = open('/home/igor/SP/SP/Lab5/' + file, 'wb') # загр файла с сервера в папку
        with open(dir+"\\"+file, 'wb') as a:
            ftp.retbinary('RETR' + file, a.write)
-       print("файл получен")
+       print("файл получен") 
      elif gap == 4: # выход
        return
      else:
