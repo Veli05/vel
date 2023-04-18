@@ -1,1 +1,1 @@
-# python labve2.py
+# python2 labve2.py
