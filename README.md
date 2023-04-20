@@ -1,6 +1,6 @@
 # python3 labvel5.py
 1. Подключаем библиотеки 
-from ftplib import FTP
+from ftplib import FTP  
 import os
 2. Запустить файл через команду python3 labvel5.py
 3. Вводим адрес сервера,имя пользователя,пароль
