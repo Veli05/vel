@@ -1,27 +1,27 @@
-from bs4 import BeautifulSoup # библиотека Python для извлечения данных из файлов HTML и XML
+from bs4 import BeautifulSoup
 import requests
 
-Template = "http://biik.ru/rasp/cg109.htm" # Запрос на сайт Биик Сибгути
-a = requests.get(Template) # получение запроса
-a.encoding="windows-1251" # кодировка
-print(a.text) # вывод на экран
-if a == 404: # если ошибка
+URL = "http://biik.ru/rasp/cg109.htm"
+a = requests.get(URL)
+a.encoding="windows-1251"
+#print(a.text)
+if a == 404:
 	print ('Not Found')
 else: 
-	html_code = a.text
-	bs =BeautifulSoup(html_code,"html.parser") #парсинг html документа
-	Lesson = bs.findAll('td') # td - столбец
+	all_web_code = a.text
+	bs =BeautifulSoup(all_web_code,"html.parser")
+	Lesson = bs.findAll('td')
 	
-	file = open ("Timetable.txt", "w") # запись в файл
+	file = open ("Raspisanie.txt", "w")
 	for item in Lesson:
 		file.write(item.text +"\n")
 	file.close()
 
-	line = open ("Timetable.txt").readlines()
+	line = open ("Raspisanie.txt").readlines()
 	for i in range(104):
 		line.pop(0)
 	
-	f = open ("Timetable.txt", "w")
+	f = open ("Raspisanie.txt", "w")
 	for i in line:
 		f.write(i)
 	f.close()
